@@ -9,6 +9,9 @@ const signin = require('./controllers/signin');
 const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
+const PORT = process.env.PORT;
+const localPORT = 3000;
+
 const db = knex({
     client: 'pg',
     connection: {
@@ -32,6 +35,6 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) }
 app.put('/image', (req,res) =>  { image.handleImage(req, res, db) })
 app.post('/imageurl', (req,res) =>  { image.handleApiCall(req, res) })
 
-app.listen(PORT, () => {
+app.listen(PORT || localPORT, () => {
     console.log(`App is running on port ${PORT}`);
 })
