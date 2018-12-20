@@ -15,13 +15,13 @@ const localPORT = 3000; */
 const db = knex({
     client: 'pg',
     connection: {
-      host: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL,
       ssl: true
     }
   });
 
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT  
 
 app.use(bodyParser.json());
 app.use(cors());
